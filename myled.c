@@ -9,7 +9,7 @@
 MODULE_AUTHOR("Shota Inoue");
 MODULE_DESCRIPTION("Weather LED control driver");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("1.1");
+MODULE_VERSION("1.2");
 
 static dev_t dev;
 static struct cdev cdv;
@@ -23,12 +23,12 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 	if(copy_from_user(&c,buf,sizeof(char)))
 		return -EFAULT;
 
-	if(c == '0')
+	if(c == '0'){
 		gpio_base[10] = 1 << 22;
 		gpio_base[10] = 1 << 23;
 		gpio_base[10] = 1 << 24;
 		gpio_base[10] = 1 << 25;
-	else if(c == '1')
+	}else if(c == '1')
 		gpio_base[7] = 1 << 22;
 	else if(c == '2')
 		gpio_base[7] = 1 << 23;
@@ -69,7 +69,7 @@ static int __init init_mod(void)
         }
         device_create(cls, NULL, dev, NULL, "myled%d",MINOR(dev));
 	gpio_base = ioremap_nocache(0x3f200000, 0xA0); 
-	for(i=23;i<26;i++){
+	for(i=22;i<26;i++){
 	const u32 led = i;
 	const u32 index = led/10;//GPFSEL2
 	const u32 shift = (led%10)*3;//15bit
