@@ -4,4 +4,4 @@ GPIO22 = 晴れ
 GPIO23 = 曇り
 GPIO24 = 雨
 GPIO25 = 雪
-(例)その日の天気が「晴れのち曇」の場合はGPIO22とGPIO23が点灯する。
+(例)その日の天気が「晴れのち曇」の場合はGPIO22とGPIO23が点灯する。(参考サイト)https://qiita.com/shizuma/items/ad04e08ab31ba436d34e
