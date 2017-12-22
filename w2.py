@@ -4,9 +4,7 @@ import json
 import subprocess
 
 try: citycode = sys.argv[1]
-except: citycode = '120010' #地域120010
-#resp = urllib2.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%citycode).read()
-
+except: citycode = '120010' #地域:千葉
 resp = urllib2.urlopen('http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'%citycode).read()
 
 # 読み込んだJSONデータをディクショナリ型に変換
