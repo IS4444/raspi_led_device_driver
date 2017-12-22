@@ -9,7 +9,7 @@
 MODULE_AUTHOR("Shota Inoue");
 MODULE_DESCRIPTION("Weather LED control driver");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("1.0");
+MODULE_VERSION("1.1");
 
 static dev_t dev;
 static struct cdev cdv;
@@ -22,18 +22,21 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 	char c;
 	if(copy_from_user(&c,buf,sizeof(char)))
 		return -EFAULT;
+
 	if(c == '0')
+		gpio_base[10] = 1 << 22;
 		gpio_base[10] = 1 << 23;
-	else if(c == '1')
-		gpio_base[7] = 1 << 23;
-	else if(c == '2')
+		gpio_base[10] = 1 << 24;
 		gpio_base[10] = 1 << 25;
+	else if(c == '1')
+		gpio_base[7] = 1 << 22;
+	else if(c == '2')
+		gpio_base[7] = 1 << 23;
 	else if(c == '3')
-		gpio_base[7] = 1 << 25;
-	else if(c == '4')
-		gpio_base[10] = 1 <<24;
-	else if(c == '5')
 		gpio_base[7] = 1 << 24;
+	else if(c == '4')
+		gpio_base[7] = 1 << 25;
+
 	return 1;
 }
 
