@@ -16,4 +16,4 @@ GPIO25 = 雪
 
 (例)その日の天気が「晴れのち曇」の場合はGPIO22とGPIO23が点灯する。(参考サイト)https://qiita.com/shizuma/items/ad04e08ab31ba436d34e
 
-使用例 https://youtu.be/-Bu2LV2BlVE
+使用例: https://youtu.be/-Bu2LV2BlVE
